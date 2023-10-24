@@ -36,8 +36,8 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  return Array.from({ length: len }, (el, i) => i * 2 + 1);
 }
 
 
@@ -432,8 +432,14 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  return arr.sort((a, b) => {
+    if (a.country > b.country) return 1;
+    if (a.country < b.country) return -1;
+    if (a.city > b.city) return 1;
+    if (a.city < b.city) return -1;
+    return 0;
+  });
 }
 
 /**
@@ -579,8 +585,17 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  let res;
+  const middle = Math.floor(arr.length / 2);
+  const head = arr.slice(0, Math.floor(arr.length / 2));
+  const tail = arr.slice(Math.round(arr.length / 2), arr.at(-1));
+  if (arr.length <= 3) {
+    res = arr.reverse();
+  } else {
+    res = [...tail, ...arr.slice(middle, -middle), ...head];
+  }
+  return res;
 }
 
 
